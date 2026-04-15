@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://eco-backend-jfn4.onrender.com'; // Hosted Backend on Render
+const API_URL = import.meta.env.VITE_API_BASE_URL || 'https://eco-backend-jfn4.onrender.com'; // Use environment variable with fallback
 
 const api = axios.create({
   baseURL: API_URL,
