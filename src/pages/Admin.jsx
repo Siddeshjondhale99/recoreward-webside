@@ -63,28 +63,28 @@ const Admin = () => {
 
   return (
     <div className="container dash-layout">
-      <header style={{ marginBottom: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+      <header style={{ marginBottom: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem' }}>
         <div>
-          <h1 style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>Core Analytics</h1>
+          <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.25rem)', marginBottom: '0.5rem' }}>Core Analytics</h1>
           <p style={{ color: 'var(--text-secondary)' }}>Central monitoring and resource management.</p>
         </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.625rem 1rem', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', fontSize: '0.875rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-             <Calendar size={16} /> Last 30 Days
+        <div style={{ display: 'flex', gap: '1rem', width: '100%', maxWidth: '350px' }}>
+          <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.625rem 0.75rem', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+             <Calendar size={14} /> 30 Days
           </div>
-          <button className="btn-primary" style={{ padding: '0.625rem 1.25rem', fontSize: '0.875rem' }}>
-            <Download size={16} /> Export CSV
+          <button className="btn-primary" style={{ flex: 1, padding: '0.625rem 1rem', fontSize: '0.8125rem' }}>
+            <Download size={16} /> Export
           </button>
         </div>
       </header>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>
-        <AdminStatCard icon={<Users size={20} />} label="Total Registered Users" value={stats.total_users} />
-        <AdminStatCard icon={<Trash2 size={20} />} label="Gross Waste Disposal" value={`${stats.total_waste_kg.toFixed(1)}kg`} />
-        <AdminStatCard icon={<Coins size={20} />} label="Active Credits" value={stats.total_points_in_circulation} />
+      <div className="stats-grid" style={{ marginBottom: '3rem' }}>
+        <AdminStatCard icon={<Users size={20} />} label="Total Users" value={stats.total_users} />
+        <AdminStatCard icon={<Trash2 size={20} />} label="Gross Waste" value={`${stats.total_waste_kg.toFixed(1)}kg`} />
+        <AdminStatCard icon={<Coins size={20} />} label="Credits" value={stats.total_points_in_circulation} />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '2rem', marginBottom: '3rem' }}>
+      <div className="dash-grid" style={{ marginBottom: '3rem' }}>
         <section className="glass" style={{ padding: '2rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -176,13 +176,13 @@ const Admin = () => {
 };
 
 const AdminStatCard = ({ icon, label, value }) => (
-  <div className="glass" style={{ padding: '2rem', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-    <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)' }}>
+  <div className="glass" style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ flexShrink: 0, width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)' }}>
       {icon}
     </div>
     <div>
-      <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 500, marginBottom: '0.125rem' }}>{label}</p>
-      <h2 style={{ fontSize: '1.75rem', fontWeight: 700 }}>{value}</h2>
+      <p style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 500, marginBottom: '0.125rem' }}>{label}</p>
+      <h2 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{value}</h2>
     </div>
   </div>
 );

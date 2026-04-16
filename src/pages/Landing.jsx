@@ -17,19 +17,19 @@ const Landing = () => {
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-full)', fontSize: '0.8125rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
                <span style={{ color: 'var(--primary)', fontWeight: 700 }}>New</span> Eco-Leaderboard is now live <ChevronRight size={14} />
             </div>
-            <h1 style={{ fontSize: 'clamp(3rem, 8vw, 4.5rem)', fontWeight: 800, lineHeight: 1, marginBottom: '2rem' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 8vw, 4.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem' }}>
                The future of <br />
                <span className="text-gradient">sustainable waste.</span>
             </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', marginBottom: '3rem', lineHeight: 1.5 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1rem, 3vw, 1.25rem)', marginBottom: '3rem', lineHeight: 1.5 }}>
               A high-precision ecosystem designed to reward ecological responsibility. 
               Track your impact, earn credits, and redeem rewards with professional-grade transparency.
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <Link to="/register" className="btn-primary" style={{ padding: '0.875rem 2rem' }}>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link to="/register" className="btn-primary" style={{ padding: '0.875rem 2rem', width: '240px', justifyContent: 'center' }}>
                 Join the platform <ArrowRight size={20} />
               </Link>
-              <button className="btn-secondary" style={{ padding: '0.875rem 2rem' }}>Learn how it works</button>
+              <button className="btn-secondary" style={{ padding: '0.875rem 2rem', width: '240px', justifyContent: 'center' }}>How it works</button>
             </div>
           </motion.div>
         </div>
@@ -39,10 +39,10 @@ const Landing = () => {
       </section>
 
       {/* Bento Grid Features */}
-      <section style={{ padding: '10rem 0' }}>
+      <section style={{ padding: 'clamp(5rem, 15vw, 10rem) 0' }}>
         <div className="container">
-          <div style={{ marginBottom: '5rem' }}>
-             <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Built for impact.</h2>
+          <div style={{ marginBottom: 'clamp(3rem, 8vw, 5rem)' }}>
+             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', marginBottom: '1rem' }}>Built for impact.</h2>
              <p style={{ color: 'var(--text-secondary)', maxWidth: '500px' }}>Comprehensive features engineered to streamline waste management and reward participation.</p>
           </div>
           
@@ -72,10 +72,10 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section style={{ paddingBottom: '12rem' }}>
+      <section style={{ paddingBottom: 'clamp(6rem, 15vw, 12rem)' }}>
         <div className="container">
-           <div className="glass" style={{ padding: '6rem', textAlign: 'center', background: 'radial-gradient(circle at top right, rgba(79, 70, 229, 0.1), transparent 40%)' }}>
-              <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Ready to contribute?</h2>
+           <div className="glass" style={{ padding: 'clamp(3rem, 10vw, 6rem) 1.5rem', textAlign: 'center', background: 'radial-gradient(circle at top right, rgba(79, 70, 229, 0.1), transparent 40%)' }}>
+              <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', marginBottom: '1.5rem' }}>Ready to contribute?</h2>
               <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 3rem' }}>
                 Create your account today and gain immediate access to the global leaderboard and reward marketplace.
               </p>

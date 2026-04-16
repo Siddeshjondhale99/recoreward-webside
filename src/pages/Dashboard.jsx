@@ -46,62 +46,64 @@ const Dashboard = () => {
 
   return (
     <div className="container dash-layout">
-      <header style={{ marginBottom: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+      <header className="dash-header" style={{ marginBottom: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem' }}>
         <div>
-          <h1 style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>Overview</h1>
+          <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.25rem)', marginBottom: '0.5rem' }}>Overview</h1>
           <p style={{ color: 'var(--text-secondary)' }}>Welcome back, {user.name}. Your impact is growing.</p>
         </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <button className="btn-secondary" style={{ padding: '0.625rem 1.25rem', fontSize: '0.875rem' }}>Download Report</button>
-          <button className="btn-primary" style={{ padding: '0.625rem 1.25rem', fontSize: '0.875rem' }}>
+        <div style={{ display: 'flex', gap: '1rem', width: '100%', maxWidth: '350px' }}>
+          <button className="btn-secondary" style={{ flex: 1, padding: '0.625rem 1rem', fontSize: '0.8125rem' }}>Report</button>
+          <button className="btn-primary" style={{ flex: 1, padding: '0.625rem 1rem', fontSize: '0.8125rem' }}>
             <Plus size={16} /> New Disposal
           </button>
         </div>
       </header>
 
       {/* Main Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '2rem' }}>
+      <div className="dash-grid">
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {/* Stats Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          <div className="stats-grid">
             <StatCard icon={<Zap size={20} />} label="Total Points" value={user.points} color="var(--primary)" />
             <StatCard icon={<Package size={20} />} label="Recycled" value={`${totalWaste.toFixed(1)}kg`} color="var(--accent-blue)" />
             <StatCard icon={<TrendingUp size={20} />} label="Impact Score" value="84/100" color="#10B981" />
           </div>
 
           {/* Activity Table */}
-          <section className="glass" style={{ padding: '2rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '1.125rem' }}>Recent Activity</h3>
-              <button className="nav-link" style={{ fontSize: '0.75rem', fontWeight: 600 }}>View all logs</button>
+          <section className="glass" style={{ padding: '1.5rem 1rem', overflow: 'hidden' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', padding: '0 0.5rem' }}>
+              <h3 style={{ fontSize: '1rem' }}>Recent Activity</h3>
+              <button className="nav-link" style={{ fontSize: '0.75rem', fontWeight: 600 }}>View all</button>
             </div>
-            <table className="activity-table">
-              <thead>
-                <tr>
-                  <th>Waste Type</th>
-                  <th>Date</th>
-                  <th>Weight</th>
-                  <th>Points</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {history.slice(0, 5).map((item) => (
-                  <tr key={item.id}>
-                    <td style={{ fontWeight: 600, textTransform: 'capitalize' }}>{item.waste_type}</td>
-                    <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                    <td>{item.weight} kg</td>
-                    <td style={{ color: 'var(--primary)', fontWeight: 700 }}>+{item.points_earned}</td>
-                    <td>
-                      <span style={{ fontSize: '0.7rem', padding: '0.25rem 0.6rem', background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', borderRadius: '4px', fontWeight: 700 }}>
-                        VERIFIED
-                      </span>
-                    </td>
+            <div className="table-container">
+              <table className="activity-table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Weight</th>
+                    <th>Points</th>
+                    <th>Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {history.slice(0, 5).map((item) => (
+                    <tr key={item.id}>
+                      <td style={{ fontWeight: 600, textTransform: 'capitalize' }}>{item.waste_type}</td>
+                      <td>{new Date(item.timestamp).toLocaleDateString()}</td>
+                      <td>{item.weight} kg</td>
+                      <td style={{ color: 'var(--primary)', fontWeight: 700 }}>+{item.points_earned}</td>
+                      <td>
+                        <span style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem', background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', borderRadius: '4px', fontWeight: 700 }}>
+                          VERIFIED
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </section>
         </div>
 
