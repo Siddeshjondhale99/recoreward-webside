@@ -14,6 +14,7 @@ import {
   Calendar
 } from 'lucide-react';
 import { 
+  PieChart, Pie, Cell, Tooltip, ResponsiveContainer,
   AreaChart, Area, XAxis, YAxis, CartesianGrid
 } from 'recharts';
 import LoadingScreen from '../components/LoadingScreen';
