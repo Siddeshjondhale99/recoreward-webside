@@ -14,9 +14,9 @@ import {
   Calendar
 } from 'lucide-react';
 import { 
-  PieChart, Pie, Cell, Tooltip, ResponsiveContainer,
   AreaChart, Area, XAxis, YAxis, CartesianGrid
 } from 'recharts';
+import LoadingScreen from '../components/LoadingScreen';
 
 const Admin = () => {
   const [stats, setStats] = useState(null);
@@ -41,7 +41,7 @@ const Admin = () => {
     fetchAdminData();
   }, []);
 
-  if (loading) return <div className="loading-state">Syncing aggregate data...</div>;
+  if (loading) return <LoadingScreen />;
 
   const pieData = Object.entries(analytics.waste_distribution).map(([name, value]) => ({
     name: name.charAt(0).toUpperCase() + name.slice(1),

@@ -14,6 +14,7 @@ import {
   Filter,
   Plus
 } from 'lucide-react';
+import LoadingScreen from '../components/LoadingScreen';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -41,7 +42,7 @@ const Dashboard = () => {
 
   const totalWaste = history.reduce((acc, curr) => acc + curr.weight, 0);
 
-  if (loading) return <div className="loading-state">Initialising platform...</div>;
+  if (loading) return <LoadingScreen />;
 
   return (
     <div className="container dash-layout">

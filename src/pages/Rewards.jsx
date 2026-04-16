@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { rewardService } from '../services/api';
 import { Award, ShoppingBag, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import LoadingScreen from '../components/LoadingScreen';
 
 const Rewards = () => {
   const { user, setUser } = useAuth();
@@ -47,7 +48,7 @@ const Rewards = () => {
     }
   };
 
-  if (loading) return <div className="loading-state">Loading Reward Catalog...</div>;
+  if (loading) return <LoadingScreen />;
 
   return (
     <div className="container rewards-page">
